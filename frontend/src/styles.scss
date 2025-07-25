@@ -1,0 +1,55 @@
+@use 'ngx-spinner/animations/square-loader.css'; 
+@use 'ngx-toastr/toastr';
+@import './app/styles/themes/light.scss';
+@import './app/styles/themes/dark.scss';
+@import './app/styles/themes/debug.scss';
+@import './app/styles/variables-primeng.scss';
+@import './app/styles/variables.scss';
+@import './app/styles/toastr.scss'; 
+@import './app/styles/components.scss';
+
+@layer app-style{
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--background-primary);
+    color: var(--foreground-primary);
+}
+
+// --- UNIVERSAL TRANSITION RULE ---
+// It applies a smooth transition to every element.
+// The `*` selector targets all elements.
+// `*::before` and `*::after` target all pseudo-elements.
+*,
+*::before,
+*::after {
+  // Apply a transition to the most common animatable properties
+  transition: background-color 0.2s ease-in-out, 
+              border-color 0.2s ease-in-out, 
+            //   color 0.2s ease-in-out,
+              box-shadow 0.2s ease-in-out,
+              opacity 0.2s ease-in-out;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+span, p, h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground-primary);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-primary);
+    &:hover {
+        color: var(--accent-primary-hover);
+    }
+}
+
+}

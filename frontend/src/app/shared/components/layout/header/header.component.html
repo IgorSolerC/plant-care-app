@@ -1,0 +1,26 @@
+<header class="app-header">
+  <div class="header-container">
+    <a class="logo" routerLink="/" (click)="closeMenu()">MyApp</a>
+
+    <nav class="nav-links" [class.is-open]="isMenuOpen">
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="active-link" (click)="closeMenu()">Início</a></li>
+        <li><a routerLink="/example" routerLinkActive="active-link" (click)="closeMenu()">Exemplo</a></li>
+        <li><a routerLink="/auth" routerLinkActive="active-link" (click)="closeMenu()">Auth</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <!-- THEME TOGGLE BUTTON -->
+      <button class="theme-toggle" (click)="themeService.toggleTheme()" [attr.aria-label]="'Switch to ' + (themeService.theme() === 'light' ? 'dark' : 'light') + ' mode'">
+        <i *ngIf="themeService.theme() === 'dark'" class="fa-solid fa-lightbulb"></i>
+        <i *ngIf="themeService.theme() === 'light'" class="fa-solid fa-moon"></i>
+      </button>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="menu-toggle" (click)="toggleMenu()" [class.is-open]="isMenuOpen" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

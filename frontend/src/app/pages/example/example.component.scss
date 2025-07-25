@@ -1,0 +1,90 @@
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  label {
+    // Muted text for labels
+    color: var(--foreground-secondary);
+    font-weight: bold;
+    font-size: var(--font-size-default);
+  }
+}
+
+
+.example-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    
+    // Use theme variable for the list item separator
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.details {
+  p {
+    margin: 0.5rem 0;
+    strong {
+      color: var(--foreground-primary);
+    }
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+.registros-container {
+  .skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .skeleton-row{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      p-skeleton {
+        flex: 1
+      }
+    }
+  }
+}
+
+// Loading/empty state text styling
+.loading, .noExamples {
+  color: var(--foreground-secondary);
+  font-style: italic;
+}

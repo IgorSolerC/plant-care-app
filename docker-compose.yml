@@ -1,0 +1,43 @@
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: database_mysql
+    restart: always
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Persist database data
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_app
+    restart: always
+    env_file:
+      - ./backend/.env
+    command: >
+      sh -c "
+        if [ \"$$RUN_ALEMBIC_MIGRATIONS\" = \"true\" ]; then
+          alembic upgrade head;
+        fi &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000
+      "
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: angular_frontend
+    ports:
+      # Map the Nginx port to the host
+      - "80:80"
+    restart: unless-stopped 
+
+volumes:
+  mysql_data:
+

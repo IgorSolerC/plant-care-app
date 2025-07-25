@@ -1,0 +1,78 @@
+ <p-confirmdialog />
+
+<div class="container">
+  
+  <!-- Section 1: Create a New Example -->
+  <section class="card">
+    <h2>Criar novo Exemplo</h2>
+    <form [formGroup]="newExampleForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="name">Nome:</label>
+        <input class="input" id="name" type="text" formControlName="name" placeholder="Nome Exemplo">
+      </div>
+      <div class="form-field">
+        <label for="description">Descrição:</label>
+        <input class="input" id="description" type="text" formControlName="description" placeholder="Uma descrição curta">
+      </div>
+      <button class="btn" type="submit" [disabled]="newExampleForm.invalid">Criar</button>
+    </form>
+  </section>
+
+  <!-- Section 2: View All Examples -->
+  <section class="card registros-container">
+    <h2>Todos os exemplos</h2>
+    <ng-container *ngIf="examples$ | async as state; else loading">
+      <div *ngIf="state.error; else showExamples" class="error-message">
+        <p>Ocorreu um erro ao carregar os exemplos. Por favor, tente novamente mais tarde.</p>
+        <!-- Optional: You could show the error details during development -->
+        <!-- <pre>{{ state.error | json }}</pre> -->
+      </div>
+      <ng-template #showExamples>
+        <ul *ngIf="state.data && state.data.length > 0; else noExamples" class="example-list">
+          <li>
+            <span>0: Exemplo Erro</span>
+            <button class="btn" (click)="viewExample(-1)">Detalhes</button>
+          </li>
+          <li *ngFor="let ex of state.data">
+            <span>{{ ex.id }}: {{ ex.name }}</span>
+            <button class="btn" (click)="viewExample(ex.id)">Detalhes</button>
+          </li>
+        </ul>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="skeleton-container">
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      </div>
+    </ng-template>
+    <ng-template #noExamples>
+      <p>Nenhum exemplo encontrado. Crie um acima!</p>
+    </ng-template>
+  </section> 
+
+  <!-- Section 3: View a Single Selected Example -->
+  <section class="card" *ngIf="selectedExample">
+    <h2>Detalhes do Exemplo</h2>
+    <div class="details">
+      <p><strong>ID:</strong> {{ selectedExample.id }}</p>
+      <p><strong>Nome:</strong> {{ selectedExample.name }}</p>
+      <p><strong>Descrição:</strong> {{ selectedExample.description }}</p>
+      <div class="actions">
+        <button class="btn neutral" (click)="clearSelection()">Fechar</button>
+        <button class="btn critical" (click)="modalDeleteExample($event, selectedExample.id)">Deletar</button>
+      </div>
+    </div>
+  </section>
+</div>
