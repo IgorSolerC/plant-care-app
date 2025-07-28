@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -11,7 +11,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthService } from './core/services/auth.service';
+import { Observable } from 'rxjs';
 
+function initializeApp(authService: AuthService): () => Observable<any> {
+  return () => authService.checkInitialSession();
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +27,12 @@ export const appConfig: ApplicationConfig = {
       spinnerInterceptor,
       authInterceptor
     ])),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AuthService],
+      multi: true
+    },
     provideAnimations(),
     provideToastr({
       timeOut: 5000,

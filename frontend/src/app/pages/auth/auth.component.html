@@ -42,30 +42,4 @@
       </button>
     </section>
   </ng-container>
-  
-    <!-- LOGGED IN VIEW -->
-      <ng-container *ngIf="authService.currentUser$ | async as user">
-        <section class="card"> 
-          <h2>Bem-vindo, {{ user.full_name || user.email }}!</h2>
-          <p>Você está autenticado! Agora você pode acessar recursos protegidos.</p>
-          <pre class="user-details">{{ user | json }}</pre>
-          <div class="actions">
-            <button class="btn critical" (click)="onLogout()">Sair</button>
-          </div>
-        </section>
-      </ng-container>
-        
-      <div class="card">
-        <p>Clique no botão para tentar buscar os usuários cadastrados de uma rota protegida.</p>
-        <button class="btn" (click)="fetchProtectedData()">Buscar Dados Protegidos</button>
-        <div *ngIf="allUsers" class="data-display">
-          <h4>Resultado:</h4>
-          <ul class="user-list">
-              <li *ngFor="let u of allUsers">
-                  <span>{{ u.id }}: {{ u.full_name }} ({{ u.email }})</span>
-              </li>
-          </ul>
-        </div>
-      </div>
-  
-  </div>
+</div>

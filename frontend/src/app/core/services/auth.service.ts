@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, switchMap, tap } from 'rxjs';
 import { User } from '../../domain/models/user'; 
 import { Token } from '../../domain/models/token';
 import { Router } from '@angular/router';
@@ -25,24 +25,36 @@ export class AuthService {
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor() {
-    // When the service is initialized, check if a token exists and get user profile
-    this.checkInitialSession();
+    window.addEventListener('storage', (event) => {
+      if (event.key === this.tokenKey && !event.newValue) {
+        // A token was removed from another tab. Force a logout in this tab.
+        this.logout();
+      }
+    });
   }
 
-  private checkInitialSession(): void {
+  public checkInitialSession(): Observable<any> {
     const token = this.getToken();
-    if (token) {
-      this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`).subscribe({
+    if (!token) {
+      // If no token, there's nothing to do. Complete immediately.
+      return of(null); 
+    }
+    return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`).pipe(
+      tap({
         next: (user) => {
           this.currentUserSubject.next(user);
           this.isAuthenticatedSubject.next(true);
         },
-        error: () => {
-          // Token is invalid or expired, so log out
+        error: (err: any) => {
+          // Token is invalid/expired, so log out
           this.logout();
         }
-      });
-    }
+      }),
+      // Use catchError to prevent the app from failing to load if the token is invalid
+      catchError(() => {
+        return of(null); // Ensure initialization completes successfully
+      })
+    );
   }
 
   // --- Core API Methods ---
@@ -51,7 +63,7 @@ export class AuthService {
     return this.http.post<User>(`${this.apiBaseUrl}/auth/register`, userData);
   }
 
-  login(credentials: any): Observable<Token> {
+  login(credentials: any): Observable<User> {
     const formData = new URLSearchParams();
     formData.set('username', credentials.email);
     formData.set('password', credentials.password);
@@ -59,18 +71,35 @@ export class AuthService {
     return this.http.post<Token>(`${this.apiBaseUrl}/auth/login`, formData.toString(), {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }).pipe(
-      tap(response => this.handleAuthSuccess(response.access_token))
+      // Once we have the token, switch to a new observable chain
+      switchMap(tokenResponse => {
+        this.saveToken(tokenResponse.access_token);
+        // Fetch the user profile
+        return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`);
+      }),
+      // After the profile is fetched, update the state
+      tap(user => {
+        this.currentUserSubject.next(user);
+        this.isAuthenticatedSubject.next(true);
+      })
     );
   }
 
   getAllUsers(): Observable<User[]> {
-    // The AuthInterceptor will automatically add the Bearer token to this request
+    // The AuthInterceptor will automatically add the Bearer token to this request0
     return this.http.get<User[]>(`${this.apiBaseUrl}/auth/users/`);
   }
 
-  loginWithGoogle(code: string): Observable<Token> {
+  loginWithGoogle(code: string): Observable<User> {
     return this.http.post<Token>(`${this.apiBaseUrl}/auth/google/login`, { code }).pipe(
-      tap(response => this.handleAuthSuccess(response.access_token))
+      switchMap(tokenResponse => {
+        this.saveToken(tokenResponse.access_token);
+        return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`);
+      }),
+      tap(user => {
+        this.currentUserSubject.next(user);
+        this.isAuthenticatedSubject.next(true);
+      })
     );
   }
 

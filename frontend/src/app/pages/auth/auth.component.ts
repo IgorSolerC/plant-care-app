@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { TabsModule } from 'primeng/tabs';
 import { InputTextModule } from 'primeng/inputtext';
 import { User } from '../../domain/models/user';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -34,6 +35,16 @@ export class AuthComponent implements OnInit {
   allUsers: User[] | null = null;
   
   ngOnInit(): void {
+      
+    this.authService.isAuthenticated$.pipe(
+      take(1) // Check only once and then unsubscribe
+    ).subscribe(isAuthenticated => {
+      if (isAuthenticated) {
+        this.router.navigate(['/home']);
+        return; // Stop further execution of ngOnInit if redirecting
+      }
+    });
+
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -58,7 +69,10 @@ export class AuthComponent implements OnInit {
   onLogin(): void {
     if (this.loginForm.invalid) return;
     this.authService.login(this.loginForm.value).subscribe({
-      next: () => this.toastr.success('Login realizado com sucesso!', 'Bem-vindo!'),
+      next: () => {
+        this.toastr.success('Login realizado com sucesso!', 'Bem-vindo!')
+        this.handleLogin()
+      },
       error: (err) => this.toastr.error(err.error?.detail || 'Falha no login', 'Erro')
     });
   }
@@ -95,6 +109,7 @@ export class AuthComponent implements OnInit {
           queryParams: { code: null },
           queryParamsHandling: 'merge',
         });
+        this.handleLogin()
       },
       error: (err) => this.toastr.error(err.error?.detail || 'Falha no login com Google', 'Erro')
     });
@@ -117,5 +132,9 @@ export class AuthComponent implements OnInit {
         this.toastr.error(err.error?.detail || 'Você não tem permissão para ver isso.', 'Erro de Autorização');
       }
     });
+  }
+
+  handleLogin() {
+    this.router.navigate(['/home'])
   }
 }
