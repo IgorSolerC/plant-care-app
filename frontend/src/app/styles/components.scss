@@ -11,7 +11,7 @@
         background-color: var(--accent-btn);
         color: var(--accent-btn-text);
 
-        * {
+        span, p, a, h1, h2, h3, h4, h5, h6 {
             color: var(--accent-btn-text);
         }
         
@@ -22,7 +22,7 @@
         &:disabled {
             background-color: var(--disabled-button-bg);
             color: var(--disabled-button-text);
-            * {
+            span, p, a, h1, h2, h3, h4, h5, h6 {
                 color: var(--disabled-btn-text);
             }
             cursor: not-allowed;
@@ -32,7 +32,7 @@
         &.neutral {
             background-color: var(--neutral-btn);
             color: var(--neutral-btn-text);
-            * {
+            span, p, a, h1, h2, h3, h4, h5, h6 {
                 color: var(--neutral-btn-text);
             }
 
@@ -44,7 +44,7 @@
         &.critical {
             background-color: var(--critical-btn);
             color: var(--critical-btn-text);
-            * {
+            span, p, a, h1, h2, h3, h4, h5, h6 {
                 color: var(--critical-btn-text);
             }
             
