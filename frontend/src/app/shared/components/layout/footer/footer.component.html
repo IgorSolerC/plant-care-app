@@ -1,5 +1,21 @@
 <footer>
-    <p>&copy; 2025 Template Fullstack. Todos os direitos reservados.</p>
-    <p>Feito com ❤️</p>
+    <div class="footer-actions">
+        <a class="btn footer-btn" routerLink="/home" routerLinkActive="active-link">
+            <lucide-icon class="icon" [img]="ListTodo" [size]="26"></lucide-icon>
+            <p>Tarefas</p>
+        </a>
+        <a class="btn footer-btn" routerLink="/example" routerLinkActive="active-link">
+            <lucide-icon class="icon" [img]="Calendar" [size]="26"></lucide-icon>
+            <p>Agenda</p>
+        </a>
+        <a class="btn footer-btn" routerLink="/history" routerLinkActive="active-link">
+            <lucide-icon class="icon" [img]="ClipboardList" [size]="26"></lucide-icon>
+            <p>Histórico</p>
+        </a>
+        <a class="btn footer-btn" routerLink="/profile" routerLinkActive="active-link">
+            <lucide-icon class="icon" [img]="User" [size]="26"></lucide-icon>
+            <p>Perfil</p>
+        </a>
+    </div>
 </footer>
   

@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr({
       timeOut: 5000,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-position',
       preventDuplicates: true,
       closeButton: true,
     }),
@@ -48,7 +48,7 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: '.dark-mode',
           cssLayer: {
               name: 'primeng',
-              order: 'primeng, app-style, app-primeng-theme, app-theme, app-components',
+              order: 'primeng, app-style, app-primeng-theme, app-theme, app-components, app-page',
           }
         }
       }

@@ -1,6 +1,7 @@
 :root{
   
 }
+
 .ngx-toastr {
   box-shadow: var(--header-shadow) !important;
 
@@ -65,4 +66,10 @@
       color: var(--warning-text);
     }
   }
+}
+
+.toast-position {
+  top: calc( var(--header-height) + 20px);
+  left: 50%;
+  transform: translateX(-50%);
 }

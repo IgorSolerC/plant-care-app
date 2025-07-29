@@ -1,4 +1,4 @@
-@use 'ngx-spinner/animations/square-loader.css'; 
+@use 'ngx-spinner/animations/ball-scale-multiple.css'; 
 @use 'ngx-toastr/toastr';
 @import './app/styles/themes/light.scss';
 @import './app/styles/themes/dark.scss';
@@ -25,16 +25,16 @@ body {
 // It applies a smooth transition to every element.
 // The `*` selector targets all elements.
 // `*::before` and `*::after` target all pseudo-elements.
-*,
-*::before,
-*::after {
-  // Apply a transition to the most common animatable properties
-  transition: background-color 0.2s ease-in-out, 
-              border-color 0.2s ease-in-out, 
-            //   color 0.2s ease-in-out,
-              box-shadow 0.2s ease-in-out,
-              opacity 0.2s ease-in-out;
-}
+// *,
+// *::before,
+// *::after {
+//   // Apply a transition to the most common animatable properties
+//   transition: background-color 0.2s ease-in-out, 
+//               border-color 0.2s ease-in-out, 
+//             //   color 0.2s ease-in-out,
+//               box-shadow 0.2s ease-in-out,
+//               opacity 0.2s ease-in-out;
+// }
 
 * {
   box-sizing: border-box;

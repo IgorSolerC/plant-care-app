@@ -1,11 +1,12 @@
 .app-header {
   height: var(--header-height);
+  width: 100vw;
   background-color: rgba(var(--background-primary-raw), 0.8);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--header-shadow);
   backdrop-filter: blur(15px);
   opacity: 100%;
-  position: sticky;
+  position: fixed;
   top: 0px;
   z-index: 1000;
 }
@@ -18,14 +19,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  button {
-    i {
-      width: 25px;
-      height: 25px;
-      font-size: 25px;
-    }
-  }
 }
 
 .logo {
@@ -45,7 +38,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg,var(--accent-primary) 0%, var(--accent-primary-hover) 100%);
+    background: var(--accent-gradient);
     border-radius: 7px;
     color: var(--background-primary);  
   }
@@ -80,28 +73,6 @@
     justify-content: center;
     align-items: center;
     padding: 0px;
-    background: linear-gradient(135deg,var(--accent-primary) 0%, var(--accent-primary-hover) 100%);
-  }
-}
-
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--foreground-secondary);
-
-  &:hover {
-    background-color: var(--border-color);
-    color: var(--foreground-primary);
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
+    background: var(--accent-gradient);
   }
 }

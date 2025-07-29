@@ -1,6 +1,6 @@
 <ngx-spinner
   class="loading-spinner"
-  type="square-loader"
+  type="ball-scale-multiple"
   bdColor="rgba(var(--background-primary-raw),0.5)"
   color="var(--accent-primary)"
   size="large"
@@ -9,13 +9,13 @@
 </ngx-spinner> 
 
 <div class="layout-container">
-   <div class="layout-inner">
-      <app-header></app-header>
+   <app-header></app-header>
+      <div class="layout-inner">
          <div class="main-container">
             <main class="main-content">
                <router-outlet></router-outlet>
             </main>
          </div>
-   </div>
+      </div>
    <app-footer></app-footer>
 </div>

@@ -19,8 +19,12 @@
     --info-primary:#007bff;
     --info-text: #f8f9fa;
 
-    --accent-primary: #46c913;           // Main brand color for links, buttons
+    --accent-primary: #36c000;           // Main brand color for links, buttons
     --accent-primary-hover: #22ac6b;     // Hover state for brand color
+    --accent-secondary: #e2f8d9;           // Main brand color for links, buttons
+    --accent-secondary-hover: rgb(179, 235, 209);     // Hover state for brand color
+    --accent-primary-gadient-color: #07a1ac;           // Main brand color for links, buttons
+    --accent-gradient: linear-gradient(135deg,var(--accent-primary) 0%, var(--accent-primary-gadient-color) 100%);
 
     --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
     --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
