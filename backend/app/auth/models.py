@@ -12,6 +12,5 @@ class User(Base):
     google_id = Column(String(255), unique=True, nullable=True) # For Google OAuth users
     is_active = Column(Boolean(), default=True)
     
-    grupo = relationship("Grupo", back_populates="usuarios")
     atividades = relationship("LogAtividade", back_populates="usuario")
     grupos_associados = relationship("GrupoUser", back_populates="usuario")

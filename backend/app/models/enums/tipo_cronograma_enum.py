@@ -1,6 +1,6 @@
 import enum
 
-class SchedulingBehaviorEnum(enum.Enum):
+class TipoCronogramaEnum(enum.Enum):
     """Comportamento do agendamento das tarefas da planta."""
-    FLEXIVEL = 0
-    FIXO = 1
+    FLEXIVEL = 1
+    FIXO = 2

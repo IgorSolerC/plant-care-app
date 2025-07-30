@@ -31,7 +31,7 @@ class Planta(Base):
     grupo = relationship("Grupo", back_populates="plantas")
     tipo_rega = relationship("TipoRega")
     tipo_fertilizante = relationship("TipoFertilizante")
-    tipo_luminosidade = relationship("Luminosidade")
+    tipo_luminosidade = relationship("TipoLuminosidade")
     tipo_vento = relationship("TipoVento")
     tipo_cronograma = relationship("TipoCronograma")
     logs_atividade = relationship("LogAtividade", back_populates="planta")
