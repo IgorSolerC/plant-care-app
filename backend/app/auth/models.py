@@ -1,5 +1,6 @@
 from sqlalchemy import Boolean, Column, Integer, String
 from app.models.base import Base
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
@@ -10,3 +11,7 @@ class User(Base):
     hashed_password = Column(String(255), nullable=True) # Nullable for Google-only users
     google_id = Column(String(255), unique=True, nullable=True) # For Google OAuth users
     is_active = Column(Boolean(), default=True)
+    
+    grupo = relationship("Grupo", back_populates="usuarios")
+    atividades = relationship("LogAtividade", back_populates="usuario")
+    grupos_associados = relationship("GrupoUser", back_populates="usuario")
