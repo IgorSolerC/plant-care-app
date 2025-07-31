@@ -2,10 +2,10 @@
 @layer app-theme{
 
 html.dark-mode {
-    --background-primary-raw: 18, 18, 18;  // RGB values
+    --background-primary-raw: 30, 30, 30;  // RGB values
     --background-primary: rgb(var(--background-primary-raw)); // Main background
 
-    --background-secondary: #1e1e1e;     // Cards, headers, etc.
+    --background-secondary: rgb(18, 18, 18);     // Cards, headers, etc.
     --foreground-primary: #e9ecef;       // Main text color
     --foreground-secondary: #adb5bd;     // Muted text
     --border-color: #343a40;
@@ -14,17 +14,17 @@ html.dark-mode {
     --warning-text: #f8f9fa;
     --error-primary: #d41d39;
     --error-text: #f8f9fa;
-    --success-primary: #28a745;
+    --success-primary: #00b646;
     --success-text: #f8f9fa;
     --info-primary:#007bff;
     --info-text: #f8f9fa;
 
-    --accent-primary: #46c913;           // Main brand color for links, buttons
-    --accent-primary-hover: #22ac6b;     // Hover state for brand color
-    --accent-secondary: #d4f7c6;           // Main brand color for links, buttons
-    --accent-secondary-hover: rgb(179, 235, 209);     // Hover state for brand color
+    --accent-primary: #00b646;           // Main brand color for links, buttons
+    --accent-primary-hover: rgb(22, 156, 127);     // Hover state for brand color
+    --accent-secondary: #102016;           // Main brand color for links, buttons
+    --accent-secondary-hover: rgb(179, 235, 221);     // Hover state for brand color
     --accent-primary-gadient-color: #07a1ac;           // Main brand color for links, buttons
-    --accent-gradient: linear-gradient(135deg,var(--accent-primary) 0%, var(--accent-primary-gadient-color) 100%);
+    --accent-gradient: linear-gradient(135deg,var(--accent-primary) 30%, var(--accent-primary-gadient-color) 100%);
 
     --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
     --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
@@ -35,6 +35,15 @@ html.dark-mode {
     --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
     --critical-btn-hover: #c60e3c;     // Hover state for critical color
     --critical-btn-text: #ffffff;      // Text color for critical buttons
+
+    --badge-neutral: var(--neutral-btn);
+    --badge-neutral-text: var(--neutral-btn-text);
+    --badge-success: var(--success-primary);
+    --badge-success-text: var(--success-text);
+    --badge-warning: var(--warning-primary);
+    --badge-warning-text: var(--warning-text);
+    --badge-critical: var(--critical-btn);
+    --badge-critical-text: var(--critical-btn-text);
 
     --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     --heavy-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);

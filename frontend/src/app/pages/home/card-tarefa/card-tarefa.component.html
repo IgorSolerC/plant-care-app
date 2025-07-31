@@ -1,0 +1,59 @@
+<p-dialog [header]="tarefa.nomePlanta" [modal]="true" [(visible)]="plantInfoVisible" [style]="{ width: '25rem' }"></p-dialog>
+<div class="card"
+    [ngClass]="{
+        'pendente': tarefa.status == tarefaStatusEnum.PENDENTE,
+        'feito': tarefa.status == tarefaStatusEnum.FEITO,
+        'pulado': tarefa.status == tarefaStatusEnum.PULADO
+    }"
+>
+    <div class="left">
+        <img (click)="showDialog()" [src]="tarefa.foto">
+    </div>
+
+    <div class="right">
+
+        <div class="header-container">
+            <div (click)="showDialog()" class="title-container">
+                <p class="title">{{ tarefa.nomePlanta }}</p>
+                <p class="subtitle">{{ tarefa.descPlanta }}</p>
+            </div>
+            <div *ngIf="tarefa.status == tarefaStatusEnum.PENDENTE" class="badge pendente"> Pendente </div>
+            <div *ngIf="tarefa.status == tarefaStatusEnum.PULADO" class="badge pulado"> Pulado </div>
+            <div *ngIf="tarefa.status == tarefaStatusEnum.FEITO" class="badge feito"> Feito </div>
+        </div>
+    
+        <div class="badge-list">
+            <div class="plant-info-row">
+                <div class="plant-info">
+                    <lucide-icon [img]="Droplets" [size]="14"></lucide-icon>
+                    {{ tarefa.tipoRega.nome }}
+                </div>
+                <div *ngIf="tarefa.tipoAdubo" class="plant-info">
+                    <lucide-icon [img]="Leaf" [size]="14"></lucide-icon>
+                    {{ tarefa.tipoAdubo.nome }}
+                </div>
+            </div>
+            <!-- <div *ngIf="tarefa.tipoLuz || tarefa.tipoVento" class="plant-info-row">
+                <div *ngIf="tarefa.tipoLuz" class="plant-info">
+                    <lucide-icon [img]="Sun" [size]="14"></lucide-icon>
+                    {{ tarefa.tipoLuz.nome }}
+                </div>
+                <div *ngIf="tarefa.tipoVento" class="plant-info">
+                    <lucide-icon [img]="Wind" [size]="14"></lucide-icon>
+                    {{ tarefa.tipoVento.nome }}
+                </div>
+            </div> -->
+        </div>
+        
+    
+        <div *ngIf="tarefa.status == tarefaStatusEnum.PENDENTE" class="acoes">
+            <button class="btn completar">
+                <lucide-icon [img]="CircleCheckBig" [size]="17"></lucide-icon>
+                <span *ngIf="!tarefa.tipoAdubo">Regar</span>
+                <span *ngIf="tarefa.tipoAdubo">Regar e Adubar</span>
+            </button>
+            <button class="btn neutral pular">
+                <lucide-icon [img]="SkipForward" [size]="17"></lucide-icon>
+            </button>
+    </div>
+</div>

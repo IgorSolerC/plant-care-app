@@ -1,10 +1,15 @@
 :root {
     --font-size-biggest: 25px;
     --font-size-big: 20px;
-    --font-size-default: 16px;
-    --font-size-small: 14px;
-    --font-size-smallest: 12px;
+    --font-size-default: 14px;
+    --font-size-small: 12px;
+    --font-size-smallest: 10px;
+    --font-family-primary: "Geist", Arial, Helvetica, sans-serif;
 
     --header-height: 80px;
-    --footer-height: 80px;
+    --footer-height: 70px;
+
+    --padding-small: 5px;
+    --padding-default: 10px;
+    --padding-large: 15px;
 }

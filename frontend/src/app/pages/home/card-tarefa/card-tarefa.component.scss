@@ -1,0 +1,110 @@
+$img-width: 50px;
+
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: var(--padding-default);
+
+    &.pendente {
+        border-left: 4px solid var(--badge-warning);
+    }
+    &.feito {
+        border-left: 4px solid var(--badge-success);
+    }
+    &.pulado {
+        border-left: 4px solid var(--badge-neutral);
+    }
+
+    img {
+        width: $img-width;
+        height: $img-width;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .right{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: calc(
+            100% - 
+            ($img-width + var(--padding-default))
+        );
+
+        .header-container{
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            gap: var(--padding-default);
+            .title-container {
+                width: calc(100% - 102px) ;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                .title {
+                    font-size: var(--font-size-big);
+                    font-weight: bold;
+                    margin: 0px;
+                    text-overflow: ellipsis;
+                    text-wrap: nowrap;
+                    overflow: hidden;
+                }
+                .subtitle {
+                    font-size: var(--font-size-default);
+                    margin: 0px;
+                    color: var(--foreground-secondary);
+                    text-overflow: ellipsis;
+                    text-wrap: nowrap;
+                    overflow: hidden;
+                };
+            }
+
+            .feito {
+                color: var(--badge-success-text);
+                background: var(--badge-success);
+            }
+            .pendente {
+                color: var(--badge-warning-text);
+                background: var(--badge-warning);
+            }
+            .pulado {
+                color: var(--badge-neutral-text);
+                background: var(--badge-neutral);
+            }
+        }
+
+        .badge-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-default);
+            
+            .plant-info-row{
+                display: flex;
+                flex-direction: row;
+                gap: var(--padding-default);
+                width: 100%;
+                .plant-info {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--padding-small);
+                    width: 50%;
+                }
+            }
+        }
+
+        .acoes{
+            display: flex;
+            flex: 1;
+            gap: var(--padding-default);
+
+            .pular {
+                width: 40px;
+            }
+            .completar {
+                flex-grow: 1;
+            }
+        }
+    }
+}
