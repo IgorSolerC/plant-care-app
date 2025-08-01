@@ -12,7 +12,7 @@
     --foreground-secondary: #6c757d;    // Muted text
     --border-color: #dee2e6;
 
-    --warning-primary: #ffc107;
+    --warning-primary: #efab00;
     --warning-text: #f8f9fa;
     --error-primary: #dc3545;
     --error-text: #f8f9fa;
@@ -31,14 +31,15 @@
     --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
     --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
     --accent-btn-text: #ffffff;       // Text color for brand buttons
-    --neutral-btn: var(--border-color); // Neutral color for buttons
+    --neutral-btn-border: var(--border-color); // Neutral color for buttons
+    --neutral-btn: var(--background-primary); // Neutral color for buttons
     --neutral-btn-hover: #c7cdd3;     // Hover state for neutral color
-    --neutral-btn-text: #212529;      // Text color for neutral buttons
+    --neutral-btn-text: var(--foreground-secondary);      // Text color for neutral buttons
     --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
     --critical-btn-hover: #d41d39;     // Hover state for critical color
     --critical-btn-text: #ffffff;      // Text color for critical buttons
 
-    --badge-neutral: var(--neutral-btn);
+    --badge-neutral: var(--foreground-secondary);
     --badge-neutral-text: var(--neutral-btn-text);
     --badge-success: var(--success-primary);
     --badge-success-text: var(--success-text);
@@ -47,14 +48,18 @@
     --badge-critical: var(--critical-btn);
     --badge-critical-text: var(--critical-btn-text);
 
-    // --badge-neutral-secondary: var(--neutral-btn);
-    // --badge-neutral-secondary-text: var(--neutral-btn);
-    // --badge-success-secondary: var(--success-primary);
-    // --badge-success-secondary-text: var(--success);
-    // --badge-warning-secondary: var(--warning-primary);
-    // --badge-warning-secondary-text: var(--warning);
-    // --badge-critical-secondary: var(--critical-btn);
-    // --badge-critical-secondary-text: var(--critical-btn);
+    --badge-neutral-secondary: #eeeeee;
+    --badge-neutral-secondary-text: var(--badge-neutral);
+    --badge-neutral-secondary-border: #d0d0d0;
+    --badge-success-secondary: #e6ffe7;
+    --badge-success-secondary-text: var(--badge-success);
+    --badge-success-secondary-border: #a5e9c0;
+    --badge-warning-secondary: #fff9e7;
+    --badge-warning-secondary-text: var(--badge-warning);
+    --badge-warning-secondary-border: #ffe28b;
+    --badge-critical-secondary: #ffe0e5; 
+    --badge-critical-secondary-text: var(--badge-critical);
+    --badge-critical-secondary-border: #ec94a1;
 
     --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     --heavy-shadow: 0 10px 18px rgba(0, 0, 0, 0.09);

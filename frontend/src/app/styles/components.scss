@@ -36,6 +36,7 @@
 
         // VARIANTES DE BOTÕES
         &.neutral {
+            border: 1px solid var(--neutral-btn-border);
             background-color: var(--neutral-btn);
             color: var(--neutral-btn-text);
             span, p, a, h1, h2, h3, h4, h5, h6 {

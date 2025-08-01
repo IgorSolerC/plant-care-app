@@ -13,6 +13,10 @@ $img-width: 50px;
     }
     &.pulado {
         border-left: 4px solid var(--badge-neutral);
+        
+        .right, .left {
+            filter: opacity(50%);
+        }
     }
 
     img {
@@ -62,16 +66,19 @@ $img-width: 50px;
             }
 
             .feito {
-                color: var(--badge-success-text);
-                background: var(--badge-success);
+                border: 1px solid var(--badge-success-secondary-border);
+                color: var(--badge-success-secondary-text);
+                background: var(--badge-success-secondary);
             }
             .pendente {
-                color: var(--badge-warning-text);
-                background: var(--badge-warning);
+                border: 1px solid var(--badge-warning-secondary-border);
+                color: var(--badge-warning-secondary-text);
+                background: var(--badge-warning-secondary);
             }
             .pulado {
-                color: var(--badge-neutral-text);
-                background: var(--badge-neutral);
+                border: 1px solid var(--badge-neutral-secondary-border);
+                color: var(--badge-neutral-secondary-text);
+                background: var(--badge-neutral-secondary);
             }
         }
 
@@ -90,6 +97,8 @@ $img-width: 50px;
                     align-items: center;
                     gap: var(--padding-small);
                     width: 50%;
+
+
                 }
             }
         }
