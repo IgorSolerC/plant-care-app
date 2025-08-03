@@ -17,7 +17,6 @@ sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..'
 
 from app.models.base import Base
 import app.models 
-import app.auth.models
 
 load_dotenv()
 

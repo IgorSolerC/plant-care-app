@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of, switchMap, tap } from 'rxjs';
-import { User } from '../../domain/models/user'; 
+import { User } from '../../domain/models/user';
 import { Token } from '../../domain/models/token';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
@@ -19,7 +19,7 @@ export class AuthService {
   // BehaviorSubject to hold the current user state
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
-  
+
   // A simple observable for checking if the user is authenticated
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -37,9 +37,9 @@ export class AuthService {
     const token = this.getToken();
     if (!token) {
       // If no token, there's nothing to do. Complete immediately.
-      return of(null); 
+      return of(null);
     }
-    return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`).pipe(
+    return this.http.get<User>(`${this.apiBaseUrl}/users/me`).pipe(
       tap({
         next: (user) => {
           this.currentUserSubject.next(user);
@@ -75,7 +75,7 @@ export class AuthService {
       switchMap(tokenResponse => {
         this.saveToken(tokenResponse.access_token);
         // Fetch the user profile
-        return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`);
+        return this.http.get<User>(`${this.apiBaseUrl}/users/me`);
       }),
       // After the profile is fetched, update the state
       tap(user => {
@@ -94,7 +94,7 @@ export class AuthService {
     return this.http.post<Token>(`${this.apiBaseUrl}/auth/google/login`, { code }).pipe(
       switchMap(tokenResponse => {
         this.saveToken(tokenResponse.access_token);
-        return this.http.get<User>(`${this.apiBaseUrl}/auth/users/me`);
+        return this.http.get<User>(`${this.apiBaseUrl}/users/me`);
       }),
       tap(user => {
         this.currentUserSubject.next(user);
@@ -123,5 +123,5 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
-  } 
+  }
 }
