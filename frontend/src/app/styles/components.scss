@@ -2,11 +2,17 @@
 
     /* BOTOES */
     .btn {
-        padding: 0.6rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--padding-default);
+
+        padding: var(--padding-default);
         border: none;
         border-radius: 4px;
         cursor: pointer;
         font-weight: 500;
+        font-family: var(--font-family);
         
         background-color: var(--accent-btn);
         color: var(--accent-btn-text);
@@ -30,6 +36,7 @@
 
         // VARIANTES DE BOTÕES
         &.neutral {
+            border: 1px solid var(--neutral-btn-border);
             background-color: var(--neutral-btn);
             color: var(--neutral-btn-text);
             span, p, a, h1, h2, h3, h4, h5, h6 {
@@ -56,25 +63,25 @@
 
     /* CARDS */
     .card {
-    background-color: var(--background-secondary);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--light-shadow);
-    
-    border-radius: 8px;
-    padding: 1rem 1.5rem;
-
-    h2 {
-        margin-top: 0;
-        color: var(--foreground-primary);
-        border-bottom: 1px solid var(--border-color);
+        background-color: var(--background-secondary);
+        border: 1px solid var(--border-color);
+        box-shadow: var(--light-shadow);
         
-        padding-bottom: 0.5rem;
-    }
+        border-radius: 8px;
+        padding: var(--padding-large);
+
+        h2 {
+            margin-top: 0;
+            color: var(--foreground-primary);
+            border-bottom: 1px solid var(--border-color);
+            
+            padding-bottom: var(--padding-default);
+        }
     }
 
     /* INPUTS */
     .input {
-        padding: 0.5rem;
+        padding: var(--padding-default);
 
         background-color: var(--background-primary);
         border: 1px solid var(--border-color);
@@ -87,4 +94,16 @@
         }
     }
 
+}
+
+/* BADGE */
+.badge {
+    display: flex;
+    gap: var(--padding-small);
+    align-items: center;
+
+    height: 22px;
+    border-radius: 1000px;
+    background-color: var(--background-tertiary);
+    padding: 0px var(--padding-default);
 }

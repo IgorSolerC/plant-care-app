@@ -3,9 +3,12 @@
 }
 
 .ngx-toastr {
+  background-image: none !important;
+  padding: 10px 15px !important;
+  border: 1px solid var(--foreground-primary);
+
   box-shadow: var(--header-shadow) !important;
 
-  background-color: var(--background-secondary);
   color: var(--foreground-primary);
   .toast-close-button {
     color: var(--foreground-primary);
@@ -16,54 +19,62 @@
 }
 
 .toast-success {
-  background-color: var(--success-primary) !important;
-  color: var(--success-text) !important;
+  background-color: var(--success-text) !important;
+  color: var(--success-primary) !important;
+  border: 1px solid var(--success-primary);
+
   .toast-close-button {
-    color: var(--success-text);
+    color: var(--success-primary);
     * {
-      color: var(--success-text);
+      color: var(--success-primary);
     }
     &:hover {
-      color: var(--success-text);
+      color: var(--success-primary);
     }
   }
 }
 .toast-error {
-  background-color: var(--error-primary) !important;
-  color: var(--error-text) !important;
+  background-color: var(--error-text) !important;
+  color: var(--error-primary) !important;
+  border: 1px solid var(--error-primary);
+
   .toast-close-button {
-    color: var(--error-text);
+    color: var(--error-primary);
     * {
-      color: var(--error-text);
+      color: var(--error-primary);
     }
     &:hover {
-      color: var(--error-text);
+      color: var(--error-primary);
     }
   }
 }
 .toast-info {
-  background-color: var(--info-primary) !important;
-  color: var(--info-text) !important;
+  background-color: var(--info-text) !important;
+  color: var(--info-primary) !important;
+  border: 1px solid var(--info-primary);
+
   .toast-close-button {
-    color: var(--info-text);
+    color: var(--info-primary);
     * {
-      color: var(--info-text);
+      color: var(--info-primary);
     }
     &:hover {
-      color: var(--info-text);
+      color: var(--info-primary);
     }
   }
 }
 .toast-warning {
-  background-color: var(--warning-primary) !important;
-  color: var(--warning-text) !important;
+  background-color: var(--warning-text) !important;
+  color: var(--warning-primary) !important;
+  border: 1px solid var(--warning-primary);
+
   .toast-close-button {
-    color: var(--warning-text);
+    color: var(--warning-primary);
     * {
-      color: var(--warning-text);
+      color: var(--warning-primary);
     }
     &:hover {
-      color: var(--warning-text);
+      color: var(--warning-primary);
     }
   }
 }

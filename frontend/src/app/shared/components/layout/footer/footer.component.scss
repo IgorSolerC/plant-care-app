@@ -16,7 +16,7 @@
         align-items: center;
         gap: 50px;
 
-        padding: 5px 30px;
+        padding: var(--padding-small) var(--padding-large);
 
         height: var(--footer-height);
         background-color: var(--background-secondary);
@@ -48,13 +48,13 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding: 5px;
+            padding: var(--padding-small);
             gap: 3px;
             
             background: var(--background-secondary);
             
             .icon {
-                color: var(--foreground-primary);
+                color: var(--foreground-secondary);
             }
             p {
                 color: var(--foreground-secondary);

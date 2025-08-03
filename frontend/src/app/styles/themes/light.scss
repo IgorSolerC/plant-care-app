@@ -2,39 +2,64 @@
 @layer app-theme{
 
 :root {
-    --background-primary-raw: 255, 255, 255; // RGB values
+    --background-primary-raw: 248, 249, 250; // RGB values
     --background-primary: rgb(var(--background-primary-raw));      // Main background
 
-    --background-secondary: #f8f9fa;    // Cards, headers, etc.
+    --background-secondary: rgb(255, 255, 255);    // Cards, headers, etc.
+    --background-tertiary: #dddddd;    // Cards, headers, etc.
+
     --foreground-primary: #212529;      // Main text color
     --foreground-secondary: #6c757d;    // Muted text
     --border-color: #dee2e6;
 
-    --warning-primary: #ffc107;
+    --warning-primary: #efab00;
     --warning-text: #f8f9fa;
     --error-primary: #dc3545;
     --error-text: #f8f9fa;
-    --success-primary: #28a745;
+    --success-primary: #00b646;
     --success-text: #f8f9fa;
     --info-primary:#007bff;
     --info-text: #f8f9fa;
 
-    --accent-primary: #36c000;           // Main brand color for links, buttons
-    --accent-primary-hover: #22ac6b;     // Hover state for brand color
-    --accent-secondary: #e2f8d9;           // Main brand color for links, buttons
-    --accent-secondary-hover: rgb(179, 235, 209);     // Hover state for brand color
+    --accent-primary: #00b646;           // Main brand color for links, buttons
+    --accent-primary-hover: rgb(22, 156, 127);     // Hover state for brand color
+    --accent-secondary: #d9f8de;           // Main brand color for links, buttons
+    --accent-secondary-hover: rgb(179, 235, 221);     // Hover state for brand color
     --accent-primary-gadient-color: #07a1ac;           // Main brand color for links, buttons
-    --accent-gradient: linear-gradient(135deg,var(--accent-primary) 0%, var(--accent-primary-gadient-color) 100%);
+    --accent-gradient: linear-gradient(135deg,var(--accent-primary) 30%, var(--accent-primary-gadient-color) 100%);
 
     --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
     --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
     --accent-btn-text: #ffffff;       // Text color for brand buttons
-    --neutral-btn: var(--border-color); // Neutral color for buttons
+    --neutral-btn-border: var(--border-color); // Neutral color for buttons
+    --neutral-btn: var(--background-primary); // Neutral color for buttons
     --neutral-btn-hover: #c7cdd3;     // Hover state for neutral color
-    --neutral-btn-text: #212529;      // Text color for neutral buttons
+    --neutral-btn-text: var(--foreground-secondary);      // Text color for neutral buttons
     --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
     --critical-btn-hover: #d41d39;     // Hover state for critical color
     --critical-btn-text: #ffffff;      // Text color for critical buttons
+
+    --badge-neutral: var(--foreground-secondary);
+    --badge-neutral-text: var(--neutral-btn-text);
+    --badge-success: var(--success-primary);
+    --badge-success-text: var(--success-text);
+    --badge-warning: var(--warning-primary);
+    --badge-warning-text: var(--warning-text);
+    --badge-critical: var(--critical-btn);
+    --badge-critical-text: var(--critical-btn-text);
+
+    --badge-neutral-secondary: #eeeeee;
+    --badge-neutral-secondary-text: var(--badge-neutral);
+    --badge-neutral-secondary-border: #d0d0d0;
+    --badge-success-secondary: #e6ffe7;
+    --badge-success-secondary-text: var(--badge-success);
+    --badge-success-secondary-border: #a5e9c0;
+    --badge-warning-secondary: #fff9e7;
+    --badge-warning-secondary-text: var(--badge-warning);
+    --badge-warning-secondary-border: #ffe28b;
+    --badge-critical-secondary: #ffe0e5; 
+    --badge-critical-secondary-text: var(--badge-critical);
+    --badge-critical-secondary-border: #ec94a1;
 
     --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     --heavy-shadow: 0 10px 18px rgba(0, 0, 0, 0.09);

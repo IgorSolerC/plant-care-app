@@ -67,12 +67,12 @@ form {
   .skeleton-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--padding-large);
 
     .skeleton-row{
       display: flex;
       flex-direction: row;
-      gap: 10px;
+      gap: var(--padding-default);
 
       p-skeleton {
         flex: 1
