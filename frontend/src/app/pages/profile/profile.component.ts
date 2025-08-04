@@ -27,6 +27,6 @@ export class ProfileComponent {
   }
 
   formatarCodigoConvite(codigo: string): string {
-    return codigo.substring(0,2) + '-' + codigo.substring(2,4) + '-' + codigo.substring(4,6) + '-' + codigo.substring(6);
+    return codigo.substring(0,2) + '-' + codigo.substring(2,4) + '-' + codigo.substring(4,6);
   }
 }

@@ -1,4 +1,3 @@
-import secrets
 from sqlalchemy.orm import Session
 from app.models.user import User
 from app.models.grupo import Grupo
@@ -8,10 +7,9 @@ from app.schemas.grupo import GrupoCreate
  
 def create(db: Session, *, group_in: GrupoCreate) -> Grupo:
     """Cria um novo grupo no banco de dados."""
-    invite_code = secrets.token_urlsafe(6)
     db_group = Grupo(
         nome=group_in.nome,
-        codigo_convite=invite_code
+        codigo_convite=group_in.codigo_convite 
     )
     db.add(db_group)
     return db_group
