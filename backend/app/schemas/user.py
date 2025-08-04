@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr
-from typing import Optional
+from typing import List, Optional
+
+from app.schemas.grupo_user import GrupoUserAssociacaoInfo
 
 # --- Token Schemas ---
 class Token(BaseModel):
@@ -27,3 +29,6 @@ class UserRead(UserBase):
 # --- Google Login Schema ---
 class GoogleLoginRequest(BaseModel):
     code: str # The authorization code from the Angular frontend
+
+class UserReadComGrupos(UserRead):
+    grupos_associados: List[GrupoUserAssociacaoInfo] = []
