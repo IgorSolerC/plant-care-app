@@ -1,3 +1,20 @@
 <div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Profile</h2>
+        </div>
+        <div *ngIf="user$ | async as user" class="card-body">
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Full Name:</strong> {{ user.full_name }}</p>
+            <h3>Associated Groups</h3>
+            <ul>
+              <li *ngFor="let grupo of user.grupos_associados">
+                  {{ grupo.grupo.nome }} - Role: {{ grupo.role.nome }} - Codigo do Grupo: {{ formatarCodigoConvite(grupo.grupo.codigo_convite) }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <button class="btn critical teste" (click)="logout()">Logout</button>
 </div>

@@ -4,6 +4,7 @@ class GrupoBase(BaseModel):
     nome: str
 
 class GrupoCreate(GrupoBase):
+    codigo_convite: str
     pass
 
 class GrupoRead(GrupoBase):

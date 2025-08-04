@@ -1,8 +1,16 @@
+import random
+import string
 from sqlalchemy.orm import Session
 from app.models.user import User
 from app.models.enums import TipoRoleEnum
 from app.repository import grupo_repository, tipo_role_repository
 from app.schemas.grupo import GrupoCreate
+
+def create_invite_code() -> str:
+    """Gera um código de convite aleatório de 6 caracteres."""
+    characters = string.ascii_uppercase + string.digits
+    
+    return ''.join(random.choices(characters, k=6))
 
 def create_default_group_for_user(db: Session, *, user: User) -> None:
     """
@@ -20,7 +28,7 @@ def create_default_group_for_user(db: Session, *, user: User) -> None:
     group_name = f"Grupo de {first_name}"
     
     # 2. Criar o grupo via repositório
-    db_group = grupo_repository.create(db=db, group_in=GrupoCreate(nome=group_name))
+    db_group = grupo_repository.create(db=db, group_in=GrupoCreate(nome=group_name, codigo_convite=create_invite_code()))
     db.flush()  # Garante que o db_group.id esteja disponível antes de criar a associação
 
     # 3. Obter a role "Admin"
@@ -33,3 +41,4 @@ def create_default_group_for_user(db: Session, *, user: User) -> None:
 
     # Nota: O commit não é feito aqui. Ele será feito no serviço principal
     # que orquestra a transação completa (ex: user_service).
+    
